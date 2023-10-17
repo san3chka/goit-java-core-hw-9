@@ -38,6 +38,8 @@ public class MyNodeStack<T> implements MyStack<T> {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException("вы вышли за пределы массива");
         }
+        index = size - index - 1;
+
 
         Node<T> current = head;
         for (int i = 0; i < index; i++) {
@@ -86,6 +88,11 @@ public class MyNodeStack<T> implements MyStack<T> {
 
         Object a = tail.getValue();
         tail = tail.getPrev();
+        if (tail != null) {
+            tail.setNext(null);
+        } else {
+            head = null;
+        }
         size--;
         return a;
     }

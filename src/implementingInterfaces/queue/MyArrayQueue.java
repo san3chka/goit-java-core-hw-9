@@ -16,13 +16,11 @@ public class MyArrayQueue<T> implements MyQueue<T> {
     public MyArrayQueue() {
         elements = new Object[BASE_ARRAY_SIZE];
         size = 0;
-        service = new Service(elements, size);
     }
 
     public MyArrayQueue(int initArray) {
         elements = new Object[initArray];
         size = 0;
-        service = new Service(elements, size);
     }
 
     @Override
@@ -57,6 +55,7 @@ public class MyArrayQueue<T> implements MyQueue<T> {
         if(elements[0] == null) {
             throw new EmptyStackException();
         }
+        service = new Service(elements, size);
         Object element = elements[0];
         service.removeElement(0);
         size--;

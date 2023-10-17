@@ -31,10 +31,9 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
                 }
                 temp = temp.getNext();
             }
-
             temp.setNext(newNode);
+            size++;
         }
-        size++;
     }
 
     @Override

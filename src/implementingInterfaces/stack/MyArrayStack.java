@@ -14,13 +14,11 @@ public class MyArrayStack<T> implements MyStack<T> {
     public MyArrayStack() {
         elements = new Object[BASE_ARRAY_SIZE];
         size = 0;
-        service = new Service(elements, size);
     }
 
     public MyArrayStack(int initArray) {
         elements = new Object[initArray];
         size = 0;
-        service = new Service(elements, size);
     }
 
     @Override
@@ -39,7 +37,8 @@ public class MyArrayStack<T> implements MyStack<T> {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException("вы вышли за пределы массива");
         }
-
+        service = new Service(elements, size);
+        index = elements.length - index;
         service.removeElement(index);
         size--;
     }
@@ -65,6 +64,7 @@ public class MyArrayStack<T> implements MyStack<T> {
         if(elements[0] == null) {
             throw new EmptyStackException();
         }
+        service = new Service(elements, size);
         Object temp = elements[size - 1];
         service.removeElement(size - 1);
         size--;
